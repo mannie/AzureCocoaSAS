@@ -35,3 +35,5 @@ let t2 = try? AzureCocoaSAS.generateToken(for: endpoint, using: policy, lifetime
 SharedAccessSignature sr=https%3A%2F%2Fdivergent%2Eservicebus%2Ewindows%2Enet%2Fstreamer&sig=HSAV7m0vOLP032URaAlNTMTIdW2MGpJA1xu2Te%2Bi5k8%3D&se=1548446767&skn=RootManageSharedAccessKey
 ```
 
+## Sample Projects
+* https://github.com/mannie/EventStreamer
