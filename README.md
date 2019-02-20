@@ -24,7 +24,7 @@ Select the target you would like to use AzureCocoaSAS from. Add `AzureCocoaSAS.f
 ```
 import AzureCocoaSAS
 
-let policy = AzureCocoaSAS.SharedAccessPolicy(name: "RootManageSharedAccessKey", key: "Jp9cUB1iCF/MBLCa9A+wLB4DKBDewmkfAkEQ6X7NjP0=")
+let policy = AzureCocoaSAS.SharedAccessPolicy(name: "RootManagedSharedAccessKey", key: "Jp9cUB1iCF/MBLCa9A+wLB4DKBDewmkfAkEQ6X7NjP0=")
 let endpoint = "https://divergent.servicebus.windows.net/streamer"
 let t1 = try? AzureCocoaSAS.generateToken(for: endpoint, using: policy) // defaults to a lifetinme of 1 week
 let t2 = try? AzureCocoaSAS.generateToken(for: endpoint, using: policy, lifetime: 60 * 60) // lifetime of 1 hour

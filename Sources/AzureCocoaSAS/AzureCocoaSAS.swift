@@ -1,12 +1,5 @@
-//
-//  GenerateSAS.swift
-//  AzureCocoaSAS
-//
-//  Created by Mannie Tagarira on 1/25/19.
-//  Copyright © 2019 Mannie Tagarira. All rights reserved.
-//
-
 import Foundation
+import Crypto
 
 public enum AzureCocoaSAS {
     
@@ -24,20 +17,22 @@ public enum AzureCocoaSAS {
         }
     }
     
-    public static func generateToken(for endpoint: String, using policy: SharedAccessPolicy, lifetime: TimeInterval = 60*60*24*7) throws -> String {
-        guard let encodedURI = endpoint.encoded() else {
+    public static func token(for endpoint: String, using policy: SharedAccessPolicy, lifetime: TimeInterval = 60*60*24*7) throws -> String {
+        guard let encodedURI = endpoint.addingPercentEncoding(withAllowedCharacters: .alphanumerics) else {
             throw TokenError.InvalidURI
         }
         
         let expiration = Int(Date().addingTimeInterval(lifetime).timeIntervalSince1970)
-        let hmac = "\(encodedURI)\n\(expiration)".hmac(key: policy.key)
+        let expiringURI = "\(encodedURI)\n\(expiration)"
         
-        guard let encodedHMAC = hmac.encoded() else {
+        guard
+            let hmac = try? HMAC.SHA256.authenticate(expiringURI, key: policy.key),
+            let encodedHMAC = hmac.base64EncodedString().addingPercentEncoding(withAllowedCharacters: .alphanumerics)
+        else {
             throw TokenError.HMACFailure
         }
-
+        
         return "SharedAccessSignature sr=\(encodedURI)&sig=\(encodedHMAC)&se=\(expiration)&skn=\(policy.name)"
     }
     
 }
-
