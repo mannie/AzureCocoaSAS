@@ -6,13 +6,13 @@ This is a small Swift library to help with the generation of SAS tokens for use 
     1. Create a new directory.
     1. Navigate into that new folder.
     1. Create a new Swift project.
-    ```
+    ```sh
     mkdir Demo
     cd Demo
     swift package init --type executable
     ```
 1. Open the newly created **Package.swift** file (`./Package.swift`) and edit it to contain the following:
-    ```
+    ```swift
     import PackageDescription
 
     let package = Package(
@@ -27,7 +27,7 @@ This is a small Swift library to help with the generation of SAS tokens for use 
     )
     ```
 1. Open the **main.swift** file (`./Sources/Demo/main.swift`) and edit it to contain the following or similar:
-    ```
+    ```swift
     import AzureCocoaSAS
 
     let policy = AzureCocoaSAS.SharedAccessPolicy(name: "SharedAccessKey", key: "Jp9cUB1iCF=")
@@ -41,12 +41,12 @@ This is a small Swift library to help with the generation of SAS tokens for use 
     ```
 
 1. Using the command line prompt, run your Swift app:
-    ```
+    ```sh
     swift run
     ```
 
     Your app should output something similar to:
-    ```
+    ```sh
     t1 => SharedAccessSignature sr=https%3A%2F%2Fdivergent%2Eservicebus%2Ewindows%2Enet%2Fstreamer&sig=JFbf9AXbrbqTFlEIioNe%2F36OeKC8QNKMcEAnjmKRo%2BU%3D&se=1551309021&skn=SharedAccessKey
     t2 => SharedAccessSignature sr=https%3A%2F%2Fdivergent%2Eservicebus%2Ewindows%2Enet%2Fstreamer&sig=1dguWqPExRoXy9rwZg%2B5OdpVirOkQEBtZkk0tMTSU%2Fo%3D&se=1550707821&skn=SharedAccessKey
     ```
