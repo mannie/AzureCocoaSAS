@@ -1,5 +1,4 @@
 // swift-tools-version:4.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
@@ -9,10 +8,11 @@ let package = Package(
         .library(name: "AzureCocoaSAS", targets: ["AzureCocoaSAS"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/crypto.git", .upToNextMajor(from: "3.3.2"))
+        .package(url: "https://github.com/vapor/crypto.git", .upToNextMajor(from: "3.3.2")),
+        .package(url: "https://github.com/krzyzanowskim/CryptoSwift.git", .exact("1.0.0"))
     ],
     targets: [
-        .target(name: "AzureCocoaSAS", dependencies: [ "Crypto" ]),
+        .target(name: "AzureCocoaSAS", dependencies: [ "Crypto", "CryptoSwift" ]),
         .testTarget(name: "AzureCocoaSASTests", dependencies: ["AzureCocoaSAS"]),
     ]
 )
