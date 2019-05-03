@@ -1,5 +1,5 @@
 import Foundation
-import Crypto
+import CryptoSwift
 
 public enum AzureCocoaSAS {
     
@@ -26,8 +26,8 @@ public enum AzureCocoaSAS {
         let expiringURI = "\(encodedURI)\n\(expiration)"
         
         guard
-            let hmac = try? HMAC.SHA256.authenticate(expiringURI, key: policy.key),
-            let encodedHMAC = hmac.base64EncodedString().addingPercentEncoding(withAllowedCharacters: .alphanumerics)
+            let hmac = try? HMAC(key: policy.key, variant: .sha256).authenticate(expiringURI.bytes),
+            let encodedHMAC = Data(bytes: hmac).base64EncodedString().addingPercentEncoding(withAllowedCharacters: .alphanumerics)
         else {
             throw TokenError.HMACFailure
         }
