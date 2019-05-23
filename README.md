@@ -51,5 +51,26 @@ This is a small Swift library to help with the generation of SAS tokens for use 
     t2 => SharedAccessSignature sr=https%3A%2F%2Fdivergent%2Eservicebus%2Ewindows%2Enet%2Fstreamer&sig=1dguWqPExRoXy9rwZg%2B5OdpVirOkQEBtZkk0tMTSU%2Fo%3D&se=1550707821&skn=SharedAccessKey
     ```
 
+## Running Unit Tests
+    Use CLI to run:
+    ```sh
+    swift test
+    ```
+    Output:
+    ```
+    [1/3] Compiling Swift Module 'AzureCocoaSAS' (1 sources)
+    Test Suite 'All tests' started at 2019-05-23 12:16:19.078
+    Test Suite 'AzureCocoaSASPackageTests.xctest' started at 2019-05-23 12:16:19.078
+    Test Suite 'AzureCocoaSASTests' started at 2019-05-23 12:16:19.078
+    Test Case '-[AzureCocoaSASTests.AzureCocoaSASTests testBasic]' started.
+    Test Case '-[AzureCocoaSASTests.AzureCocoaSASTests testBasic]' passed (0.150 seconds).
+    Test Suite 'AzureCocoaSASTests' passed at 2019-05-23 12:16:19.228.
+    Executed 1 test, with 0 failures (0 unexpected) in 0.150 (0.150) seconds
+    Test Suite 'AzureCocoaSASPackageTests.xctest' passed at 2019-05-23 12:16:19.228.
+    Executed 1 test, with 0 failures (0 unexpected) in 0.150 (0.150) seconds
+    Test Suite 'All tests' passed at 2019-05-23 12:16:19.228.
+    Executed 1 test, with 0 failures (0 unexpected) in 0.150 (0.151) seconds 
+    ```
+    
 ## Sample Projects
 * https://github.com/mannie/EventStreamer
