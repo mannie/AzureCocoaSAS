@@ -1,0 +1,13 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'macos-latest'
+
+steps:
+- bash: |
+   pwd
+   ls -laF
+   swift test
+   
+  displayName: 'swift test'
